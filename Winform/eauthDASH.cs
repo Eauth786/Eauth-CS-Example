@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +12,7 @@ namespace Eauth_CS_Winform_Example
 {
     public partial class eauthDASH : Form
     {
+        eauth auth = new eauth();
         public string Username { get; set; }
         public string Createdate { get; set; }
         public string Expiredate { get; set; }
@@ -36,6 +37,7 @@ namespace Eauth_CS_Winform_Example
             label4.Text = "Hardware ID: " + HardwareID;
             label5.Text = "Rank: " + Rank;
             label6.Text = "Application Name: " + ApplicationName;
+            //label6.Text = "Variable: " + auth.grabvariable("your variable id here");
         }
     }
 }
