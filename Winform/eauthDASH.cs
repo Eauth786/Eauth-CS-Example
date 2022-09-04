@@ -37,7 +37,7 @@ namespace Eauth_CS_Winform_Example
             label4.Text = "Hardware ID: " + HardwareID;
             label5.Text = "Rank: " + Rank;
             label6.Text = "Application Name: " + ApplicationName;
-            //label6.Text = "Variable: " + auth.grabvariable("your variable id here");
+            //label7.Text = "Variable: " + auth.grabvariable("your variable id here");
         }
     }
 }
