@@ -122,6 +122,7 @@ namespace Eauth_CS_Console_Example
         public static string initresult = null; public static bool initB = false;
         public static string loginresult = null;
         public static string registerresult = null;
+        public static string varresult = null;
         public static void init()
         {
             try
@@ -385,6 +386,46 @@ namespace Eauth_CS_Console_Example
                 Environment.Exit(0);
             }
             register = true;
+        }
+        public static string grabvariable(string varid)
+        {
+            try
+            {
+                WebClient cs_web = new WebClient();
+                cs_web.DownloadString(URL);
+            }
+            catch
+            {
+                Environment.Exit(0);
+            }
+            if (!initB)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Unable to take action, make sure you've init in beginning");
+                Thread.Sleep(1000);
+                Environment.Exit(0);
+            }
+            using (authreq)
+            {
+                NameValueCollection registerData = new NameValueCollection()
+                {
+                    { "s0rt", wahid("var") },
+                    { "varid", wahid(varid) },
+                    { "appkey", wahid(eauth.ApplicationKey) },
+                    { "acckey", wahid(eauth.AccountKey) }
+                };
+                varresult = Encoding.UTF8.GetString(authreq.UploadValues(URL, registerData));
+            }
+            if (aithnayn(varresult) == "var_not_found")
+            {
+                varresult = ">_<";
+            }
+            else if (aithnayn(varresult) == "incorrect_application_details")
+            {
+                Environment.Exit(0);
+            }
+            return aithnayn(varresult);
         }
         public class init_a
         {
