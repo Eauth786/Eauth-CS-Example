@@ -106,22 +106,22 @@ namespace Eauth_CS_Winform_Example
             tabadal = tabadal.Replace("-LU-", "z");
             return tabadal;
         }
-        public const string URL = "https://eauth.000webhostapp.com/api/";
-        public static readonly WebClient authreq = new WebClient();
+        private const string URL = "https://eauth.000webhostapp.com/api/";
+        private static readonly WebClient authreq = new WebClient();
         public string Username = null;
-        public string Password = null;
         public string Createdate = null;
         public string HardwareID = null;
         public string Expiredate = null;
         public string Rank = null;
-        public string Status = null;
+        private string Status = null;
         public string ApplicationName = null;
-        public string Loggedmessage = null;
-        public string Registeredmessage = null;
-        public string Pausedmessage = null;
-        public string initresult = null; public bool initB = false;
-        public string loginresult = null;
-        public string registerresult = null;
+        private string Loggedmessage = null;
+        private string Registeredmessage = null;
+        private string Pausedmessage = null;
+        private string initresult = null; private bool initB = false;
+        private string loginresult = null;
+        private string registerresult = null;
+        private string varresult = null;
         public void init()
         {
             try
@@ -349,6 +349,38 @@ namespace Eauth_CS_Winform_Example
             }
             register = true;
             MessageBox.Show(Registeredmessage);
+        }
+        public string grabvariable(string varid)
+        {
+            try
+            {
+                WebClient cs_web = new WebClient();
+                cs_web.DownloadString(URL);
+            }
+            catch
+            {
+                Environment.Exit(0);
+            }
+            using (authreq)
+            {
+                NameValueCollection registerData = new NameValueCollection()
+                {
+                    { "s0rt", wahid("var") },
+                    { "varid", wahid(varid) },
+                    { "appkey", wahid(eauth.ApplicationKey) },
+                    { "acckey", wahid(eauth.AccountKey) }
+                };
+                varresult = Encoding.UTF8.GetString(authreq.UploadValues(URL, registerData));
+            }
+            if (aithnayn(varresult) == "var_not_found")
+            {
+                varresult = ">_<";
+            }
+            else if (aithnayn(varresult) == "incorrect_application_details")
+            {
+                Environment.Exit(0);
+            }
+            return aithnayn(varresult);
         }
         public class init_a
         {
