@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Security;
 
@@ -91,6 +91,7 @@ namespace Eauth_CS_Console_Example
                             Console.WriteLine("Create Date: " + eauth.Createdate);
                             Console.WriteLine("Expire Date: " + eauth.Expiredate);
                             Console.WriteLine("Hardware ID: " + eauth.HardwareID);
+                            //Console.WriteLine("Variable: " + eauth.grabvariable("your variable id here"));
                             Thread.Sleep(2500);
                             Console.Clear();
                             Load();
