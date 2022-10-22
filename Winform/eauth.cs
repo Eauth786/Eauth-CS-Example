@@ -106,7 +106,7 @@ namespace Eauth_CS_Winform_Example
             tabadal = tabadal.Replace("-LU-", "z");
             return tabadal;
         }
-        private const string URL = "https://eauth.000webhostapp.com/api/";
+        private const string URL = "https://eauth.gq/api/";
         private static readonly WebClient authreq = new WebClient();
         public string Username = null;
         public string Createdate = null;
