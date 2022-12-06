@@ -106,7 +106,7 @@ namespace Eauth_CS_Console_Example
             tabadal = tabadal.Replace("-LU-", "z");
             return tabadal;
         }
-        public const string URL = "https://www.eauth.gq/api/";
+        public const string URL = "https://eauth.gq/api/";
         public static readonly WebClient authreq = new WebClient();
         public static string Username = null;
         public static string Password = null;
